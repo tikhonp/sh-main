@@ -103,9 +103,9 @@ services:
     secrets:
       - source: dozzle-users
         target: /data/users.yml
-    network_mode: service:tailscale
+    network_mode: service:ts-dozzle
     depends_on:
-      - tailscale
+      - ts-dozzle
 
 volumes:
   certbot-certs:
