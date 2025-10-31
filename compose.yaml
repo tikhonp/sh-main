@@ -18,47 +18,73 @@ services:
     depends_on:
       - nginx
 
-  tailscale:
-    image: tailscale/tailscale:stable
-    container_name: ts-main
-    hostname: ts-main
+  ssh-server:
+    image: lscr.io/linuxserver/openssh-server:10.0_p1-r9-ls209
+    container_name: main-proxy-ssh-server
+    restart: unless-stopped
     env_file: "secrets/main.env"
     environment:
-      - TS_STATE_DIR=/var/lib/tailscale
-      - TS_USERSPACE=false
-      - TS_ACCEPT_DNS=true
-    volumes:
-      - ts-state:/var/lib/tailscale
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    cap_add:
-      - net_admin
-    restart: unless-stopped
+      - DOCKER_MODS=linuxserver/mods:openssh-server-ssh-tunnel
+      - SHELL_NOLOGIN=true
+      - USER_NAME=dummy
+    expose:
+      # mykpp.online
+      - 10000
+      # mountainteaband.ru
+      - 10001
+      # photos.tikhonnnnn.com
+      - 10002
+      # files.tikhonnnnn.com
+      - 10003
+      # secrets.tikhonnnnn.com
+      - 10006
+      # rapsberry backup dozzle
+      - 10007
+    ports:
+      # ssh port for reverse tunnels
+      - "56234:2222"
     logging:
       driver: "json-file"
       options:
         max-size: "100m"
         max-file: "10"
-    ports:
-      - "443:443"
-      - "80:80"
 
   nginx:
-    image: nginx:1.29.2
+    image: nginx:1.29.3
     container_name: main-proxy-nginx
     restart: unless-stopped
     volumes:
       - "./nginx-conf/:/etc/nginx/conf.d:ro"
       - "certbot-certs:/etc/letsencrypt:ro"
       - "certbot-webroot:/var/www/certbot:ro"
+    ports:
+      - "443:443"
+      - "80:80"
     logging:
       driver: "json-file"
       options:
         max-size: "100m"
         max-file: "10"
-    network_mode: service:tailscale
-    depends_on:
-      - tailscale
+
+  ts-dozzle:
+    image: tailscale/tailscale:stable
+    container_name: ts-dozzle
+    hostname: ts-dozzle-main
+    env_file: "secrets/main.env"
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=false
+      - TS_ACCEPT_DNS=true
+    volumes:
+      - ts-dozzle-state:/var/lib/tailscale
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - net_admin
+    restart: unless-stopped
+    expose:
+      # dozzle
+      - "8080"
 
   dozzle:
     image: amir20/dozzle:latest
@@ -72,8 +98,7 @@ services:
       - DOZZLE_ENABLE_SHELL=true
       - DOZZLE_AUTH_PROVIDER=simple
       - DOZZLE_HOSTNAME=main-proxy
-      # ssh-server:10007
-      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,dozzle-raspb-server:7007
+      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,dozzle-raspb-server:7007,ssh-server:10007
       - DOZZLE_NO_ANALYTICS=true
     secrets:
       - source: dozzle-users
@@ -91,8 +116,8 @@ volumes:
     name: "main-proxy-dozzle"
   certbot-webroot:
     name: "main-proxy-certbot-webroot"
-  ts-state:
-    name: "main-proxy-ts-state"
+  ts-dozzle-state:
+    name: "main-proxy-ts-dozzle-state"
 
 networks:
   default:
