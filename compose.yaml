@@ -38,8 +38,6 @@ services:
       - 10003
       # secrets.tikhonnnnn.com
       - 10006
-      # rapsberry backup dozzle
-      - 10007
     ports:
       # ssh port for reverse tunnels
       - "56234:2222"
@@ -98,7 +96,7 @@ services:
       - DOZZLE_ENABLE_SHELL=true
       - DOZZLE_AUTH_PROVIDER=simple
       - DOZZLE_HOSTNAME=main-proxy
-      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,dozzle-raspb-server:7007,ssh-server:10007
+      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,dozzle-raspb-server:7007,blueberry-ts-dozzle:7007
       - DOZZLE_NO_ANALYTICS=true
     secrets:
       - source: dozzle-users
