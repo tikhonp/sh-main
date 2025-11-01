@@ -10,7 +10,7 @@ Reverse proxy server for routing requests to various backend services.
 
 1. Clone the repository:
    ```bash
-   git clone --recurse-submodules git@github.com:tikhonp/main-proxy.git
+   git clone --recurse-submodules git@github.com:tikhonp/sh-main.git
    cd sh-main
    ```
 
