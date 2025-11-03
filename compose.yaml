@@ -44,6 +44,8 @@ services:
       options:
         max-size: "100m"
         max-file: "10"
+    networks:
+      - webnet
 
   nginx:
     image: nginx:1.29.3
@@ -62,7 +64,7 @@ services:
         max-size: "100m"
         max-file: "10"
     networks:
-      default:
+      webnet:
         ipv4_address: 172.18.0.10
 
   ts-dozzle:
@@ -84,6 +86,13 @@ services:
     expose:
       # dozzle
       - "8080"
+    networks:
+      - webnet
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
 
   dozzle:
     image: amir20/dozzle:latest
@@ -105,6 +114,11 @@ services:
     network_mode: service:ts-dozzle
     depends_on:
       - ts-dozzle
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
 
 volumes:
   certbot-certs:
@@ -119,7 +133,7 @@ volumes:
     name: "main-proxy-ts-dozzle-state"
 
 networks:
-  default:
+  webnet:
     name: "main-proxy-network"
     driver: bridge
     ipam:
