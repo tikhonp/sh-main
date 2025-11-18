@@ -4,6 +4,8 @@ _Docker-Compose/NGINX/SSH-tunnel/Tailscale_
 
 Reverse proxy server for routing requests to various backend services.
 
+![sh-main-architecture](docs/SH-infra.png)
+
 ## Deployment
 
 > Ensure you have _Docker_, _Docker Compose_ and _Make_ installed on your server.
@@ -15,9 +17,9 @@ Reverse proxy server for routing requests to various backend services.
    ```
 
 2. Obtain SSL certificates using Let's Encrypt:
-    ```bash
-    make all
-    ```
+   ```bash
+   make all
+   ```
 
 3. Start the services using Docker Compose:
    ```bash
