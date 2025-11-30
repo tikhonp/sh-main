@@ -14,6 +14,7 @@ DOMAINS := \
 	files.tikhonnnnn.com \
 	dozzle.tikhonnnnn.com \
 	secrets.tikhonnnnn.com \
+	music.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 
