@@ -36,6 +36,8 @@ services:
       - 10003
       # music.tikhonnnnn.com
       - 10004
+      # api.music.tikhonnnnn.com
+      - 10005
       # secrets.tikhonnnnn.com
       - 10006
     ports:
