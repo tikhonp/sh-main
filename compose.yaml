@@ -40,6 +40,8 @@ services:
       - 10005
       # secrets.tikhonnnnn.com
       - 10006
+      # tags.music.tikhonnnnn.com
+      - 10007
     ports:
       # ssh port for reverse tunnels
       - "56234:2222"
