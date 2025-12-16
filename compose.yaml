@@ -66,9 +66,7 @@ services:
       - "./secrets/nginx_htpasswd:/etc/nginx/.htpasswd:ro"
     ports:
       - "443:443"
-      - "[::]:443:443"
       - "80:80"
-      - "[::]:80:80"
     logging:
       driver: "json-file"
       options:
@@ -147,9 +145,11 @@ networks:
   webnet:
     name: "main-proxy-network"
     driver: bridge
+    enable_ipv6: true
     ipam:
       config:
         - subnet: 172.18.0.0/16
+        - subnet: fde6:c965:c0b0::/64
 
 secrets:
   dozzle-users:
