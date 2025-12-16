@@ -1,7 +1,7 @@
 services:
   certbot:
-    image: certbot/certbot:v5.1.0
-    container_name: main-proxy-certbot
+    image: certbot/certbot:v5.2.2
+    container_name: certbot
     restart: unless-stopped
     entrypoint: ["/bin/sh", "-c", "while true; do certbot renew --webroot -w /var/www/certbot; sleep 12h; done"]
     volumes:
@@ -17,8 +17,8 @@ services:
       - nginx
 
   ssh-server:
-    image: lscr.io/linuxserver/openssh-server:10.0_p1-r9-ls209
-    container_name: main-proxy-ssh-server
+    image: lscr.io/linuxserver/openssh-server:10.0_p1-r10-ls212
+    container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
     environment:
@@ -54,8 +54,8 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.29.3
-    container_name: main-proxy-nginx
+    image: nginx:1.29.4
+    container_name: nginx
     restart: unless-stopped
     volumes:
       - "./nginx-conf/:/etc/nginx/conf.d:ro"
