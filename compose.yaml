@@ -65,7 +65,9 @@ services:
       - "certbot-webroot:/var/www/certbot:ro"
       - "./secrets/nginx_htpasswd:/etc/nginx/.htpasswd:ro"
     ports:
-      - "443:443"
+      - "443:443/tcp"
+      - "147.45.159.94:443:443/udp"
+      - "[2a03:6f00:a::ce16]:443:443/udp"
       - "80:80"
     logging:
       driver: "json-file"
