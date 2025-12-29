@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     entrypoint: >
       /bin/sh -c 'trap exit TERM;
+      apk add docker-cli;
       while :; do
         certbot renew --deploy-hook "docker exec nginx nginx -s reload" --webroot -w /var/www/certbot;
         sleep 12h & wait $${!};
@@ -13,7 +14,7 @@ services:
       - "certbot-certs:/etc/letsencrypt"
       - "certbot-webroot:/var/www/certbot"
       - "/var/log/letsencrypt:/var/log/letsencrypt"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     logging:
       driver: "json-file"
       options:
