@@ -18,6 +18,7 @@ DOMAINS := \
 	api.music.tikhonnnnn.com \
 	tags.music.tikhonnnnn.com \
 	brainz.music.tikhonnnnn.com \
+	discs.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 

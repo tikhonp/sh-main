@@ -51,6 +51,8 @@ services:
       - 10007
       # brainz.music.tikhonnnnn.com
       - 10008 
+      # discs.tikhonnnnn.com
+      - 10009
     ports:
       # ssh port for reverse tunnels
       # only on ipv4 address so i only put 
