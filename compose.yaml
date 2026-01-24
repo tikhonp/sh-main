@@ -84,7 +84,7 @@ services:
       
       # Binding to udp for quic / http3 support
       - "147.45.159.94:443:443/udp"
-      # - "[2a03:6f00:a::ce16]:443:443/udp"
+      - "[2a03:6f00:a::ce16]:443:443/udp"
 
     logging:
       driver: "json-file"
