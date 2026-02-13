@@ -1,6 +1,6 @@
 services:
   certbot:
-    image: certbot/certbot:v5.3.0
+    image: certbot/certbot:v5.3.1
     container_name: certbot
     restart: unless-stopped
     entrypoint: >
@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls214
+    image: linuxserver/openssh-server:10.2_p1-r0-ls215
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -142,6 +142,19 @@ services:
     network_mode: service:ts-dozzle
     depends_on:
       - ts-dozzle
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+
+  watchtower:
+    container_name: watchtower
+    image: nickfedor/watchtower:1
+    env_file: ./secrets/watchtower.env
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: --cleanup --remove-volumes --schedule "0 0 4 * * *"
     logging:
       driver: "json-file"
       options:
