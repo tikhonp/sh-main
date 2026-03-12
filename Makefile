@@ -15,7 +15,7 @@ DOMAINS := \
 	dozzle.tikhonnnnn.com \
 	secrets.tikhonnnnn.com \
 	music.tikhonnnnn.com \
-	api.music.tikhonnnnn.com \
+	oss.music.tikhonnnnn.com \
 	tags.music.tikhonnnnn.com \
 	brainz.music.tikhonnnnn.com \
 	discs.tikhonnnnn.com \
