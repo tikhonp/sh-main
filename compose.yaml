@@ -1,13 +1,13 @@
 services:
   certbot:
-    image: certbot/certbot:v5.3.1
+    image: certbot/certbot:v5.4.0
     container_name: certbot
     restart: unless-stopped
     entrypoint: >
       /bin/sh -c 'trap exit TERM;
       apk add docker-cli;
       while :; do
-        certbot renew --deploy-hook "docker exec nginx nginx -s reload" --webroot -w /var/www/certbot;
+        certbot renew --deploy-hook "docker exec nginx nginx -s reload 2>/dev/null" --webroot -w /var/www/certbot;
         sleep 12h & wait $${!};
       done'
     volumes:
@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls217
+    image: linuxserver/openssh-server:10.2_p1-r0-ls219
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -67,7 +67,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.29.5
+    image: nginx:1.29.6
     container_name: nginx
     restart: unless-stopped
     volumes:
