@@ -74,7 +74,7 @@ services:
       - "./nginx-conf/:/etc/nginx/conf.d:ro"
       - "certbot-certs:/etc/letsencrypt:ro"
       - "certbot-webroot:/var/www/certbot:ro"
-      - "./secrets/nginx_htpasswd:/etc/nginx/.htpasswd:ro"
+      - "./secrets/main/nginx-htpasswd:/etc/nginx/.htpasswd:ro"
     ports:
       # No service running on this port, just redirecting to 443
       - "80:80"
@@ -99,7 +99,9 @@ services:
     image: tailscale/tailscale:stable
     container_name: ts-dozzle
     hostname: ts-dozzle-main
-    env_file: "./secrets/tailscale.env"
+    env_file: 
+      - "./secrets/tailscale.env"
+      - "./secrets/proxy.env"
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
@@ -151,7 +153,9 @@ services:
   watchtower:
     container_name: watchtower
     image: nickfedor/watchtower:1
-    env_file: ./secrets/watchtower.env
+    env_file: 
+      - "./secrets/watchtower.env"
+      - "./secrets/proxy.env"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: --cleanup --remove-volumes --schedule "0 0 4 * * *"
@@ -188,4 +192,4 @@ networks:
 
 secrets:
   dozzle-users:
-    file: ./secrets/dozzle-users.yaml
+    file: ./secrets/main/dozzle-users.yaml
