@@ -73,7 +73,7 @@ headscale:
   # The API key used by Headplane for server-side operations.
   # This is required for OIDC authentication and the Headplane agent.
   # Generate one with: headscale apikeys create
-  # api_key: "<your-api-key>"
+  api_key_path: "/etc/headscale/secrets/hp_api_key"
 
   # Whether the Headscale configuration should be strictly validated
   # when reading from `config_path`. If true, Headplane will not interact
@@ -102,7 +102,7 @@ integration:
   agent:
     enabled: true
 
-    pre_authkey_path: "/etc/headscale/secrets/hp_agent_api_key"
+    # pre_authkey_path: "/etc/headscale/secrets/hp_agent_authkey"
 
     # The name of the Headscale user to create pre-auth keys under.
     # A user with this name must exist in Headscale.
@@ -166,13 +166,13 @@ integration:
 
 # OIDC Configuration for simpler authentication
 # (This is optional, but recommended for the best experience)
-# oidc:
+oidc:
 # Set to false to define OIDC config without enabling it.
 # Useful for Helm charts or generating docs from config files.
 # enabled: true
 
 # The OIDC issuer URL
-# issuer: "https://accounts.google.com"
+  issuer: "https://accounts.google.com"
 
 # DEPRECATED: Use headscale.api_key instead.
 # If set, this will be used as a fallback for headscale.api_key.
@@ -195,12 +195,12 @@ integration:
 # The client ID for the OIDC client
 # For the best experience please ensure this is *identical* to the client_id
 # you are using for Headscale. because
-# client_id: "your-client-id"
+  client_id: "720700549020-bao6s8nltgg951cv4lcpcpeaas7jl8mk.apps.googleusercontent.com"
 
 # The client secret for the OIDC client
 # You may also provide `client_secret_path` instead to read a value from disk.
 # See https://headplane.net/configuration/#sensitive-values
-# client_secret: "<your-client-secret>"
+  client_secret_path: "/etc/headscale/secrets/hs_oidc_client_secret"
 
 # Whether to use PKCE when authenticating users. This is recommended as it
 # adds an extra layer of security to the authentication process. Enabling this

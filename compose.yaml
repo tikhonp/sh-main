@@ -178,8 +178,9 @@ services:
       - "147.45.159.94:3478:3478/udp"
       - "[2a03:6f00:a::ce16]:3478:3478/udp"
     volumes:
-      - "./headscale/headscale-conf.yaml:/etc/headscale/config.yaml:ro"
       - "headscale-data:/var/lib/headscale"
+      - "./headscale/headscale-conf.yaml:/etc/headscale/config.yaml:ro"
+      - "./secrets/headscale/:/etc/headscale/secrets:ro"
     command: serve
     healthcheck:
       test: ["CMD", "headscale", "health"]
