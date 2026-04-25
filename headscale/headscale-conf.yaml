@@ -10,18 +10,17 @@
 #
 # https://myheadscale.example.com:443
 #
-server_url: https://ts.tikhonnnnn.com:8080
+server_url: https://hs.tikhonnnnn.com:443
 
 # Address to listen to / bind to on the server
 #
 # For production:
 listen_addr: 0.0.0.0:8080
-# listen_addr: 127.0.0.1:8080
 
 # Address to listen to /metrics and /debug, you may want
 # to keep this endpoint private to your internal network
 # Use an emty value to disable the metrics listener.
-metrics_listen_addr: 127.0.0.1:9090
+metrics_listen_addr: null
 
 # Address to listen for gRPC.
 # gRPC is used for controlling a headscale server
@@ -121,8 +120,8 @@ derp:
     ipv6: 2a03:6f00:a::ce16
 
   # List of externally available DERP maps encoded in JSON
-  urls:
-    - https://controlplane.tailscale.com/derpmap/default
+  urls: []
+    # - https://controlplane.tailscale.com/derpmap/default
 
   # Locally available DERP map files encoded in YAML
   #
@@ -140,7 +139,7 @@ derp:
   auto_update_enabled: true
 
   # How often should we check for DERP updates?
-  update_frequency: 3h
+  update_frequency: 24h
 
 # Disables the automatic check for headscale updates on startup
 disable_check_updates: false
@@ -270,8 +269,8 @@ tls_letsencrypt_challenge_type: HTTP-01
 tls_letsencrypt_listen: ":http"
 
 ## Use already defined certificates:
-tls_cert_path: "/etc/letsencrypt/live/ts.tikhonnnnn.com/fullchain.pem"
-tls_key_path: "/etc/letsencrypt/live/ts.tikhonnnnn.com/privkey.pem"
+tls_cert_path: ""
+tls_key_path: ""
 
 log:
   # Valid log levels: panic, fatal, error, warn, info, debug, trace
@@ -322,7 +321,7 @@ dns:
   # `base_domain` must be a FQDN, without the trailing dot.
   # The FQDN of the hosts will be
   # `hostname.base_domain` (e.g., _myhost.example.com_).
-  base_domain: magic.ts.tikhonnnnn.com
+  base_domain: magic.hs.tikhonnnnn.com
 
   # Whether to use the local DNS settings of a node or override the local DNS
   # settings (default) and force the use of Headscale's DNS configuration.
@@ -331,6 +330,7 @@ dns:
   # List of DNS servers to expose to clients.
   nameservers:
     global:
+      - 8.8.8.8
       - 1.1.1.1
       - 1.0.0.1
       - 2606:4700:4700::1111

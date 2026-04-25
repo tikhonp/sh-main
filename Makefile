@@ -19,7 +19,8 @@ DOMAINS := \
 	tags.music.tikhonnnnn.com \
 	brainz.music.tikhonnnnn.com \
 	discs.tikhonnnnn.com \
-	ts.tikhonnnnn.com \
+	hs.tikhonnnnn.com \
+	admin.hs.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 
