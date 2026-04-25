@@ -102,7 +102,7 @@ integration:
   agent:
     enabled: true
 
-    # pre_authkey_path: "/etc/headscale/secrets/hp_agent_authkey"
+    pre_authkey_path: "/etc/headscale/secrets/hp_agent_authkey"
 
     # The name of the Headscale user to create pre-auth keys under.
     # A user with this name must exist in Headscale.
@@ -177,6 +177,7 @@ oidc:
 # DEPRECATED: Use headscale.api_key instead.
 # If set, this will be used as a fallback for headscale.api_key.
 # headscale_api_key: "<your-headscale-api-key>"
+  headscale_api_key_path: "/etc/headscale/secrets/hp_api_key"
 
 # If your OIDC provider does not support discovery (does not have the URL at
 # `/.well-known/openid-configuration`), you need to manually set endpoints.
