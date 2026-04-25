@@ -39,7 +39,7 @@ docker compose up -d
 
 ## Plans and TODOs
 
-- [ ] Host headscale instead of tailscale inc.
+- [x] Host headscale instead of tailscale inc.
 - [ ] SSH tunnels -> Wireguard (wg server here instead of SSH-tunnel)
 
 # License

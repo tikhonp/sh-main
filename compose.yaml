@@ -210,6 +210,25 @@ services:
         max-size: "100m"
         max-file: "10"
 
+  backup:
+    image: offen/docker-volume-backup:v2.48.0
+    container_name: volume-backup
+    restart: unless-stopped
+    env_file: "./secrets/main/volume-backup.env"
+    environment:
+      BACKUP_FILENAME: backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      BACKUP_PRUNING_PREFIX: backup-
+      BACKUP_RETENTION_DAYS: '7'
+    volumes:
+      - "headscale-data:/backup/headscale:ro"
+      - "headplane-data:/backup/headplane:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
+
 volumes:
   certbot-certs:
     name: "main-proxy-certbot-certs"
