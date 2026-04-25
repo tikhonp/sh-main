@@ -110,7 +110,7 @@ integration:
 
     # How often to sync node information (in milliseconds).
     # Default: 180000 (3 minutes)
-    # cache_ttl: 180000
+    cache_ttl: 60000
 
     # The work_dir represents where the agent will store its data to be able
     # to automatically reauthenticate with your Tailnet. It needs to be
@@ -191,7 +191,7 @@ oidc:
 # The authentication method to use when communicating with the token endpoint.
 # This is fully optional and Headplane will attempt to auto-detect the best
 # method and fall back to `client_secret_basic` if unsure.
-# token_endpoint_auth_method: "client_secret_post"
+  token_endpoint_auth_method: "client_secret_post"
 
 # The client ID for the OIDC client
 # For the best experience please ensure this is *identical* to the client_id
@@ -210,7 +210,7 @@ oidc:
 # use_pkce: true
 
 # If you want to disable traditional login via Headscale API keys
-# disable_api_key_login: false
+  disable_api_key_login: true
 
 # By default profile pictures are pulled from the OIDC provider when
 # we go to fetch the userinfo endpoint. Optionally, this can be set to
