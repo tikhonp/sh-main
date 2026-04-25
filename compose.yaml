@@ -165,6 +165,25 @@ services:
         max-size: "100m"
         max-file: "10"
 
+  headscale:
+    image: headscale/headscale:v0.28.0
+    restart: unless-stopped
+    container_name: headscale
+    read_only: true
+    tmpfs:
+      - /var/run/headscale
+    ports:
+      - "0.0.0.0:8080:8080"
+      - "0.0.0.0:9090:9090"
+      - "147.45.159.94:3478:3478/udp"
+      - "[2a03:6f00:a::ce16]:3478:3478/udp"
+    volumes:
+      - "./headscale-conf.yaml:/etc/headscale/config.yaml:ro"
+      - "headscale-data:/var/lib/headscale"
+    command: serve
+    healthcheck:
+        test: ["CMD", "headscale", "health"]
+
 volumes:
   certbot-certs:
     name: "main-proxy-certbot-certs"
@@ -176,6 +195,8 @@ volumes:
     name: "main-proxy-certbot-webroot"
   ts-dozzle-state:
     name: "main-proxy-ts-dozzle-state"
+  headscale-data:
+    name: "main-proxy-headscale-data"
 
 networks:
   default:
