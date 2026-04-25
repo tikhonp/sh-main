@@ -1,6 +1,6 @@
 services:
   certbot:
-    image: certbot/certbot:v5.4.0
+    image: certbot/certbot:v5.5.0
     container_name: certbot
     restart: unless-stopped
     entrypoint: >
@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls219
+    image: linuxserver/openssh-server:10.2_p1-r0-ls223
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -67,7 +67,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.29.6
+    image: nginx:1.29.8
     container_name: nginx
     restart: unless-stopped
     volumes:
