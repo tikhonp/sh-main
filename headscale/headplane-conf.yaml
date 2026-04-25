@@ -100,7 +100,7 @@ integration:
   # from your Tailnet. It auto-generates ephemeral pre-auth keys using the
   # OIDC headscale_api_key, so no manual key configuration is needed.
   agent:
-    enabled: true
+    enabled: false
 
     pre_authkey_path: "/etc/headscale/secrets/hp_agent_api_key"
 
