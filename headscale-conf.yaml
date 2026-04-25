@@ -270,8 +270,8 @@ tls_letsencrypt_challenge_type: HTTP-01
 tls_letsencrypt_listen: ":http"
 
 ## Use already defined certificates:
-tls_cert_path: ""
-tls_key_path: ""
+tls_cert_path: "/etc/letsencrypt/live/ts.tikhonnnnn.com/fullchain.pem"
+tls_key_path: "/etc/letsencrypt/live/ts.tikhonnnnn.com/privkey.pem"
 
 log:
   # Valid log levels: panic, fatal, error, warn, info, debug, trace
