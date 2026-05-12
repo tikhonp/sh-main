@@ -1,7 +1,7 @@
 # Makefile for obtaining and renewing letsencrypt certs (standalone for first obtain,
 # webroot renew via docker-compose when nginx is serving the webroot)
 
-CERTBOT_IMAGE := certbot/certbot:v5.5.0
+CERTBOT_IMAGE := certbot/certbot:v5.6.0
 CERTBOT_VOLUME := main-proxy-certbot-certs
 WEBROOT_VOLUME := main-proxy-certbot-webroot
 
