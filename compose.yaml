@@ -1,6 +1,6 @@
 services:
   certbot:
-    image: certbot/certbot:v5.5.0
+    image: certbot/certbot:v5.6.0
     container_name: certbot
     restart: unless-stopped
     entrypoint: >
@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls224
+    image: linuxserver/openssh-server:10.2_p1-r0-ls225
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -135,7 +135,7 @@ services:
       # - DOZZLE_ENABLE_SHELL=true
       - DOZZLE_AUTH_PROVIDER=simple
       - DOZZLE_HOSTNAME=main-proxy
-      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,dozzle-raspb-server:7007,apple-ts-dozzle:7007,blueberry-ts-dozzle:7007
+      - DOZZLE_REMOTE_AGENT=blackberry-ts-dozzle:7007,apple-ts-dozzle:7007,blueberry-ts-dozzle:7007
       - DOZZLE_NO_ANALYTICS=true
     secrets:
       - source: dozzle-users
@@ -150,8 +150,8 @@ services:
         max-file: "10"
 
   watchtower:
-    container_name: watchtower
     image: nickfedor/watchtower:1
+    container_name: watchtower
     env_file: 
       - "./secrets/watchtower.env"
       - "./secrets/proxy.env"
