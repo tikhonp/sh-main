@@ -67,7 +67,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.29.8
+    image: nginx:1.31.0
     container_name: nginx
     restart: unless-stopped
     volumes:
@@ -192,7 +192,7 @@ services:
       me.tale.headplane.target: headscale
 
   headplane:
-    image: ghcr.io/tale/headplane:0.6.2
+    image: ghcr.io/tale/headplane:0.6.3
     container_name: headplane
     restart: unless-stopped
     expose:
