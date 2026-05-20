@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls225
+    image: linuxserver/openssh-server:10.2_p1-r0-ls226
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -77,6 +77,7 @@ services:
       - "certbot-certs:/etc/letsencrypt:ro"
       - "certbot-webroot:/var/www/certbot:ro"
       - "./secrets/main/nginx-htpasswd:/etc/nginx/.htpasswd:ro"
+      - "./nginx-contents/:/usr/share/nginx/html:ro"
     ports:
       # No service running on this port, just redirecting to 443
       - "80:80"
