@@ -21,6 +21,7 @@ DOMAINS := \
 	discs.tikhonnnnn.com \
 	hs.tikhonnnnn.com \
 	admin.hs.tikhonnnnn.com \
+	notes.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 
