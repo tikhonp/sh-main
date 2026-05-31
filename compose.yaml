@@ -55,6 +55,8 @@ services:
       - 10009
       # notes.tikhonnnnn.com
       - 10010
+      # nvdrm.tikhonnnnn.com
+      - 10011
     ports:
       # ssh port for reverse tunnels
       # only on ipv4 address so i only put 
