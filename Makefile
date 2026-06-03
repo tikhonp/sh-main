@@ -14,15 +14,13 @@ DOMAINS := \
 	files.tikhonnnnn.com \
 	dozzle.tikhonnnnn.com \
 	secrets.tikhonnnnn.com \
-	music.tikhonnnnn.com \
-	oss.music.tikhonnnnn.com \
 	tags.music.tikhonnnnn.com \
 	brainz.music.tikhonnnnn.com \
 	discs.tikhonnnnn.com \
 	hs.tikhonnnnn.com \
 	admin.hs.tikhonnnnn.com \
 	notes.tikhonnnnn.com \
-	nvdrm.tikhonnnnn.com \
+	music.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 

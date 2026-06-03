@@ -41,10 +41,6 @@ services:
       - 10002
       # files.tikhonnnnn.com
       - 10003
-      # music.tikhonnnnn.com
-      - 10004
-      # oss.music.tikhonnnnn.com
-      - 10005
       # secrets.tikhonnnnn.com
       - 10006
       # tags.music.tikhonnnnn.com
@@ -55,7 +51,7 @@ services:
       - 10009
       # notes.tikhonnnnn.com
       - 10010
-      # nvdrm.tikhonnnnn.com
+      # music.tikhonnnnn.com
       - 10011
     ports:
       # ssh port for reverse tunnels
