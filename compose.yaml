@@ -43,8 +43,6 @@ services:
       - 10003
       # secrets.tikhonnnnn.com
       - 10006
-      # tags.music.tikhonnnnn.com
-      - 10007
       # brainz.music.tikhonnnnn.com
       - 10008 
       # discs.tikhonnnnn.com
@@ -67,7 +65,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.31.0
+    image: nginx:1.31.1
     container_name: nginx
     restart: unless-stopped
     volumes:

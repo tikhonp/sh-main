@@ -14,7 +14,6 @@ DOMAINS := \
 	files.tikhonnnnn.com \
 	dozzle.tikhonnnnn.com \
 	secrets.tikhonnnnn.com \
-	tags.music.tikhonnnnn.com \
 	brainz.music.tikhonnnnn.com \
 	discs.tikhonnnnn.com \
 	hs.tikhonnnnn.com \
