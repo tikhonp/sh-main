@@ -24,7 +24,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.2_p1-r0-ls226
+    image: linuxserver/openssh-server:10.2_p1-r0-ls227
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -166,7 +166,7 @@ services:
         max-file: "10"
 
   headscale:
-    image: headscale/headscale:0.28.0
+    image: headscale/headscale:0.29.0
     restart: unless-stopped
     container_name: headscale
     read_only: true
@@ -211,7 +211,7 @@ services:
         max-file: "10"
 
   backup:
-    image: offen/docker-volume-backup:v2.48.0
+    image: offen/docker-volume-backup:v2.48.1
     container_name: volume-backup
     restart: unless-stopped
     env_file: "./secrets/main/volume-backup.env"
