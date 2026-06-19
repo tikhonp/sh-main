@@ -65,7 +65,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.31.1
+    image: nginx:1.31.2
     container_name: nginx
     restart: unless-stopped
     volumes:
@@ -166,7 +166,7 @@ services:
         max-file: "10"
 
   headscale:
-    image: headscale/headscale:0.29.0
+    image: headscale/headscale:0.29.1
     restart: unless-stopped
     container_name: headscale
     read_only: true
