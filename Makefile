@@ -20,6 +20,7 @@ DOMAINS := \
 	admin.hs.tikhonnnnn.com \
 	notes.tikhonnnnn.com \
 	music.tikhonnnnn.com \
+	audiomuse.music.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 
