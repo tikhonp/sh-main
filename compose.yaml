@@ -168,7 +168,7 @@ services:
         max-file: "10"
 
   headscale:
-    image: headscale/headscale:0.29.1
+    image: headscale/headscale:0.29.2
     restart: unless-stopped
     container_name: headscale
     read_only: true
