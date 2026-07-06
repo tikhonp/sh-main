@@ -14,6 +14,7 @@ services:
       - "certbot-certs:/etc/letsencrypt"
       - "certbot-webroot:/var/www/certbot"
       - "/var/log/letsencrypt:/var/log/letsencrypt"
+      - "/var/lib/letsencrypt:/var/lib/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     logging:
       driver: "json-file"
@@ -53,6 +54,8 @@ services:
       - 10010
       # music.tikhonnnnn.com
       - 10011
+    volumes:
+      - "ssh-server:/config"
     ports:
       # ssh port for reverse tunnels
       # only on ipv4 address so i only put 
@@ -246,6 +249,8 @@ volumes:
     name: "main-proxy-headscale-data"
   headplane-data:
     name: "main-proxy-headplane-data"
+  ssh-server:
+    name: "main-proxy-ssh-server-data"
 
 networks:
   default:
