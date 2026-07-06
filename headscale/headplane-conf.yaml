@@ -174,11 +174,6 @@ oidc:
 # The OIDC issuer URL
   issuer: "https://accounts.google.com"
 
-# DEPRECATED: Use headscale.api_key instead.
-# If set, this will be used as a fallback for headscale.api_key.
-# headscale_api_key: "<your-headscale-api-key>"
-  headscale_api_key_path: "/etc/headscale/secrets/hp_api_key"
-
 # If your OIDC provider does not support discovery (does not have the URL at
 # `/.well-known/openid-configuration`), you need to manually set endpoints.
 # This also works to override endpoints if you so desire or if your OIDC
