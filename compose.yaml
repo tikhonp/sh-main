@@ -1,6 +1,6 @@
 services:
   certbot:
-    image: certbot/certbot:v5.7.0
+    image: certbot/certbot:v5.8.0
     container_name: certbot
     restart: unless-stopped
     entrypoint: >
@@ -25,7 +25,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.3_p1-r0-ls232
+    image: linuxserver/openssh-server:10.3_p1-r1-ls236
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -70,7 +70,7 @@ services:
       - webnet
 
   nginx:
-    image: nginx:1.31.4
+    image: nginx:1.31.6
     container_name: nginx
     restart: unless-stopped
     volumes:
@@ -215,7 +215,7 @@ services:
         max-file: "10"
 
   backup:
-    image: offen/docker-volume-backup:v2.48.2
+    image: offen/docker-volume-backup:v2.49.0
     container_name: volume-backup
     restart: unless-stopped
     env_file: "./secrets/main/volume-backup.env"
