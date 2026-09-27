@@ -33,6 +33,7 @@ services:
       - DOCKER_MODS=linuxserver/mods:openssh-server-ssh-tunnel
       - SHELL_NOLOGIN=true
       - USER_NAME=dummy
+      - LOG_STDOUT=true
     expose:
       # mykpp.online
       - 10000
@@ -56,6 +57,7 @@ services:
       - 10011
     volumes:
       - "ssh-server:/config"
+      - "./ssh-server/sshd_config.d:/config/sshd/sshd_config.d:ro"
     ports:
       # ssh port for reverse tunnels
       # only on ipv4 address so i only put 
