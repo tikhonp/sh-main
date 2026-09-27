@@ -162,7 +162,11 @@ node:
 
   ephemeral:
     # Time before an inactive ephemeral node is deleted.
-    inactivity_timeout: 30m
+    # Raised from 30m: the fleet's ts-* sidecars register with an ephemeral key, and a
+    # >30m home-internet outage got them deleted and re-registered,
+    # orphaning containers that share their netns (dozzle agent vanished). Keep it in
+    # hours ("d" is not a valid Go duration here).
+    inactivity_timeout: 168h
 
   # HA subnet router health probing.
   #
