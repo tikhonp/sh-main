@@ -150,6 +150,10 @@ services:
     secrets:
       - source: dozzle-users
         target: /data/users.yml
+      - source: cert
+        target: /dozzle_cert.pem
+      - source: key
+        target: /dozzle_key.pem
     network_mode: service:ts-dozzle
     depends_on:
       - ts-dozzle
@@ -271,3 +275,7 @@ networks:
 secrets:
   dozzle-users:
     file: ./secrets/main/dozzle-users.yaml
+  cert:
+    file: ./secrets/dozzle-certs/dozzle_cert.pem
+  key:
+    file: ./secrets/dozzle-certs/dozzle_key.pem
