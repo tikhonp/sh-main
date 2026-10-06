@@ -25,7 +25,7 @@ services:
       - nginx
 
   ssh-server:
-    image: linuxserver/openssh-server:10.3_p1-r1-ls237
+    image: linuxserver/openssh-server:10.3_p1-r1-ls238
     container_name: ssh-server
     restart: unless-stopped
     env_file: "./secrets/ssh-auth-key.env"
@@ -141,7 +141,7 @@ services:
       - dozzle:/data
     environment:
       - DOZZLE_ENABLE_ACTIONS=true
-      # - DOZZLE_ENABLE_SHELL=true
+      - DOZZLE_ENABLE_SHELL=true
       - DOZZLE_AUTH_PROVIDER=simple
       - DOZZLE_HOSTNAME=main-proxy
       # ,blueberry-ts-dozzle:7007
