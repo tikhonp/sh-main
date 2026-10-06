@@ -140,6 +140,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /proc:/host/proc:ro
       - dozzle:/data
     environment:
       - DOZZLE_ENABLE_ACTIONS=true
