@@ -21,6 +21,7 @@ DOMAINS := \
 	notes.tikhonnnnn.com \
 	music.tikhonnnnn.com \
 	audiomuse.music.tikhonnnnn.com \
+	proxier.tikhonnnnn.com \
 
 EMAIL := tikhon.petrishchev@gmail.com
 

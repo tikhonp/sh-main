@@ -45,6 +45,8 @@ services:
       - 10003
       # audiomuse.music.tikhonnnnn.com
       - 10004
+      # proxier.tikhonnnnn.com
+      - 10005
       # secrets.tikhonnnnn.com
       - 10006
       # brainz.music.tikhonnnnn.com
