@@ -35,9 +35,9 @@ services:
       - USER_NAME=dummy
       - LOG_STDOUT=true
     expose:
-      # mykpp.online
-      - 10000
       # mountainteaband.ru
+      - 10000
+      # mykpp.online
       - 10001
       # photos.tikhonnnnn.com
       - 10002
