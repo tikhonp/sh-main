@@ -49,6 +49,8 @@ services:
       - 10005
       # secrets.tikhonnnnn.com
       - 10006
+      # git.tikhonnnnn.com
+      - 10007
       # brainz.music.tikhonnnnn.com
       - 10008 
       # discs.tikhonnnnn.com
@@ -57,6 +59,8 @@ services:
       - 10010
       # music.tikhonnnnn.com
       - 10011
+      # git.tikhonnnnn.com SSH (published below, not proxied by nginx)
+      - 10012
     volumes:
       - "ssh-server:/config"
       - "./ssh-server/sshd_config.d:/config/sshd/sshd_config.d:ro"
@@ -65,6 +69,9 @@ services:
       # only on ipv4 address so i only put 
       # ipv4 in client configs
       - "56234:2222"
+      # git over SSH to Forgejo on blackberry: the reverse tunnel's port
+      # itself, so clients reach it as git.tikhonnnnn.com:2222
+      - "2222:10012"
     logging:
       driver: "json-file"
       options:
